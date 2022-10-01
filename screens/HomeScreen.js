@@ -41,10 +41,9 @@ const HomeScreen = () => {
               setOrigin({
                 location: details.geometry.location,
                 description: data.description,
-              })
+              }),
+              setDestination(null)
             )
-
-            dispatch(setDestination(null))
           }}
           fetchDetails={true}
           returnKeyType={'Search'}
