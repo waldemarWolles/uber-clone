@@ -8,6 +8,7 @@ import { GOOGLE_MAPS_APIKEY } from '@env'
 import { useDispatch } from 'react-redux'
 
 import { setDestination, setOrigin } from '../redux/navSlice'
+import NavFavourites from '../components/NavFavourites'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -37,12 +38,12 @@ const HomeScreen = () => {
           }}
           enablePoweredByContainer={false}
           onPress={(data, details = null) => {
+            dispatch(setDestination(null))
             dispatch(
               setOrigin({
                 location: details.geometry.location,
                 description: data.description,
-              }),
-              setDestination(null)
+              })
             )
           }}
           fetchDetails={true}
@@ -58,6 +59,7 @@ const HomeScreen = () => {
         />
 
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   )
